@@ -14,7 +14,7 @@ export function Profile() {
         <strong>George Soares</strong>
         <p>
           <img src={'icons/level.svg'} alt='level'/>
-          Level { level }
+          Level { isNaN(level) ? 1 : level }
         </p>
       </div>
     </div>
