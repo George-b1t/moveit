@@ -1,0 +1,76 @@
+.container {
+  width: 420px;
+  height: 380px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.content {
+  height: 230px;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.welcome {
+  height: 110px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.welcome h1 {
+  color: var(--white);
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.welcomeWithGithub {
+  width: 318px;
+  
+  display: flex;
+}
+
+.welcomeWithGithub p {
+  font-size: 1.1rem;
+  font-weight: 500;
+  
+  color: var(--text-highlight);
+  margin-left: 1rem;
+  width: 254px;
+}
+
+.sendLogin {
+  width: 420px;
+  height: 80px;
+
+  display: flex;
+}
+
+.sendLogin input {
+  width: 340px;
+  padding-left: 2rem;
+
+  color: var(--white);
+  background: 
+    linear-gradient(90deg, var(--blue-dark) 0%,
+    rgba(73, 83, 184, 0.2) 100%);
+
+  border-radius: 5px 0px 0px 5px;
+  border: none;
+  outline: none;
+}
+
+.sendLogin button {
+  width: 80px;
+  
+  background: var(--blue-dark);
+  border-radius: 0px 5px 5px 0px;  
+  border: none;
+  
+  font-size: 0;
+}

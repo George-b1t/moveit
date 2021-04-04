@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+::-webkit-input-placeholder {
+   color: var(--text-highlight);
+}
+
 :root {
   --white: #FFFFFF;
   --background: #F2F3F5;
