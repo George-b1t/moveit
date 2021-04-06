@@ -28,9 +28,6 @@ export function LoginBox() {
       setUser(resp.data)
       router.push('/')
     });
-
-    setIsLoading(false);
-
   };
 
   return (
