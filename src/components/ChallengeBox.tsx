@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { FormEvent, useContext } from 'react';
 
 import styles from '../styles/components/ChallengeBox.module.css';
 

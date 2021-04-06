@@ -1,6 +1,7 @@
 import { FormEvent, useContext, useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import Spinner from 'react-bootstrap/Spinner';
 
 import styles from '../styles/components/LoginBox.module.css';
 
@@ -9,6 +10,7 @@ import Cookies from 'js-cookie';
 
 export function LoginBox() {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
 
   const { setUser } = useContext(UserContext);
 
@@ -17,7 +19,8 @@ export function LoginBox() {
   async function sendName(e: FormEvent) {
     e.preventDefault();
 
-    Cookies.set('username', username)
+    Cookies.set('username', username);
+    setIsLoading(true);
 
     await axios.post('/api/subscribe', {
       username
@@ -25,6 +28,9 @@ export function LoginBox() {
       setUser(resp.data)
       router.push('/')
     });
+
+    setIsLoading(false);
+
   };
 
   return (
@@ -38,6 +44,7 @@ export function LoginBox() {
             <p>Faça login com seu Github para começar</p>
           </div>
         </div>
+
         <form onSubmit={sendName} className={styles.sendLogin}>
           <input type='text' 
             id='inputUsername' 
@@ -46,7 +53,11 @@ export function LoginBox() {
             required
           />
           <button type='submit'>
-            <img src={'/icons/right-arrow.svg'} alt="Right Arrow"/>
+            {isLoading ? (
+              <div className={styles.loader}></div>
+            ) : (
+              <img src={'/icons/right-arrow.svg'} alt="Right Arrow"/>
+            )}
           </button>
         </form>
       </div>
