@@ -33,6 +33,7 @@
   width: 318px;
   
   display: flex;
+  align-items: center
 }
 
 .welcomeWithGithub p {
@@ -91,5 +92,63 @@
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media(min-width: 1400px) {
+  .container {
+    width: 500px;
+    height: 460px
+  }
+  .content {
+    height: 280px
+  }
+  .welcome {
+    height: 150px;
+  }
+  .welcomeWithGithub {
+    width: 100%;
+  }
+  .welcomeWithGithub p {
+    font-size: 1.25rem;
+    width: 300px
+  }
+  .welcomeWithGithub img {
+    width: 70px
+  }
+  .sendLogin {
+    width: 500px
+  }
+  .sendLogin input {
+    width: 400px;
+    height: 100px;
+    font-size: 1.5rem;
+  }
+  .sendLogin button {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media(max-width: 500px) {
+  .container {
+    width: 320px;
+    padding: 10px;
+  }
+  .container > img {
+    width: 300px;
+  }
+  .welcome {
+    width: 100%;
+  }
+  .welcomeWithGithub {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .sendLogin {
+    width: 100%
+  }
+  .sendLogin input {
+    width: 220px;
   }
 }

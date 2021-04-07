@@ -11,6 +11,22 @@
 }
 
 .spaceImage {
-  height: 100%;
+  height: 100vh;
   overflow: hidden;
+}
+
+@media(min-width: 1400px) {
+  .spaceImage img {
+    width: 900px
+  }
+}
+
+@media (max-width: 1270px) {
+  .container {
+    justify-content: center;
+    padding-right: 0;
+  }
+  .spaceImage {
+    display: none;
+  }
 }

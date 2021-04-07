@@ -1,7 +1,6 @@
 import { FormEvent, useContext, useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import Spinner from 'react-bootstrap/Spinner';
 
 import styles from '../styles/components/LoginBox.module.css';
 
