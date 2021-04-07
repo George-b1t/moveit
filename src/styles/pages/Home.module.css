@@ -31,3 +31,15 @@
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 600px) {
+  .container section {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0;
+    gap: 3rem;
+  }
+  .container section > div:last-child {
+    height: 500px
+  }
+}
