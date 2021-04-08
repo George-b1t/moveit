@@ -49,7 +49,6 @@ export function ChallengesProvider({
 }: ChallengesProviderProps) {
   const { user, update, findUser } = useContext(UserContext);
 
-  const [tempUser, setTempUser] = useState({} as UserData);
   const [name, setName] = useState(user.username ?? rest.username)
   const [level, setLevel] = useState(user.level);
   const [currentExperience, setCurrentExperience] 

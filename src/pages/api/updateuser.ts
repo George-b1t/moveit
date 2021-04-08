@@ -2,13 +2,6 @@ import { VercelRequest, VercelResponse } from '@vercel/node';
 import { MongoClient, Db } from 'mongodb';
 import url from 'url';
 
-interface UserData {
-  username: string;
-  level: number;
-  challengesCompleted: number;
-  currentExperience: number;
-}
-
 let cachedDb: Db = null;
 
 async function connectToDatabase(uri: string) {

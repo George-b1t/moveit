@@ -27,7 +27,7 @@ export function UserProvider({ children }: UserProviderProps ) {
   async function findUser(username: string) {
     await (async () => {
       await axios.post('/api/subscribe',{
-        username
+        username,
       }).then(r => {
         setUser(r.data);
       }).catch(err => {});

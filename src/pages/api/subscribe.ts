@@ -1,13 +1,8 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
 import { MongoClient, Db } from 'mongodb';
 import url from 'url';
-
-interface UserData {
-  username: string;
-  level: number;
-  challengesCompleted: number;
-  currentExperience: number;
-}
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 let cachedDb: Db = null;
 
@@ -31,7 +26,7 @@ async function connectToDatabase(uri: string) {
 };
 
 export default async (request: VercelRequest, response: VercelResponse) => {
-  const { username } = request.body;
+  const { username, password } = request.body;
 
   const db = await connectToDatabase(process.env.MONGODB_URI);
 
@@ -41,27 +36,38 @@ export default async (request: VercelRequest, response: VercelResponse) => {
     username
   });
 
-  if (!userExists) {
-    await collection.insertOne({
+  if(userExists && password) {
+    const isValidPassword = await bcrypt.compare(password, userExists.password);
+    if (isValidPassword) {
+      return response.status(201).json({
+        username: userExists.username,
+        level: userExists.level,
+        challengesCompleted: userExists.challengesCompleted,
+        currentExperience: userExists.currentExperience
+      });
+    } else {
+      console.log('cheguei aqui')
+      return response.status(401).json({
+        message: 'UNAUTHORIZED'
+      })
+    }
+  } else {
+    if (!userExists) {
+      await collection.insertOne({
+        username,
+        password: bcrypt.hashSync(password, 8),
+        level: 1,
+        challengesCompleted: 0,
+        currentExperience: 0,
+        subscribedAt: new Date(),
+      });
+    }
+  
+    return response.status(201).json({
       username,
       level: 1,
       challengesCompleted: 0,
       currentExperience: 0,
-      subscribedAt: new Date(),
     });
-  } else {
-    return response.status(201).json({
-      username: userExists.username,
-      level: userExists.level,
-      challengesCompleted: userExists.challengesCompleted,
-      currentExperience: userExists.currentExperience
-    });
-  };
-
-  return response.status(201).json({
-    username,
-    level: 1,
-    challengesCompleted: 0,
-    currentExperience: 0,
-  });
+  }
 };

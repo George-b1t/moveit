@@ -66,6 +66,19 @@
   outline: none;
 }
 
+.sendLogin .inputPass {
+  animation: input-pass .8s ease;
+}
+
+@keyframes input-pass {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .sendLogin button {
   width: 80px;
   
@@ -93,6 +106,11 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.incPass {
+  color: var(--red);
+  position: absolute
 }
 
 @media(min-width: 1400px) {
