@@ -24,7 +24,6 @@ export default function Home(props: HomeProps) {
   useEffect(() => {
     console.log('ok')
     if(props.username) {
-      console.log(props.username)
       setIsLogged(true);
     } else {
       router.push('/login')

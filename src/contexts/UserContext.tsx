@@ -29,6 +29,8 @@ export function UserProvider({ children }: UserProviderProps ) {
       await axios.post('/api/subscribe',{
         username,
       }).then(r => {
+        console.log('OPA')
+        console.log(r.data)
         setUser(r.data);
       }).catch(err => {});
     })();

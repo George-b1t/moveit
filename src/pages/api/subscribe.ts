@@ -61,13 +61,19 @@ export default async (request: VercelRequest, response: VercelResponse) => {
         currentExperience: 0,
         subscribedAt: new Date(),
       });
+      return response.status(201).json({
+        username,
+        level: 1,
+        challengesCompleted: 0,
+        currentExperience: 0,
+      });
+    } else {
+      return response.status(201).json({
+        username: userExists.username,
+        level: userExists.level,
+        challengesCompleted: userExists.challengesCompleted,
+        currentExperience: userExists.currentExperience,
+      });
     }
-  
-    return response.status(201).json({
-      username,
-      level: 1,
-      challengesCompleted: 0,
-      currentExperience: 0,
-    });
   }
 };
